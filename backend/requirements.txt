@@ -1,0 +1,4 @@
+ultralytics==8.4.175
+fastapi>=0.115,<1
+uvicorn>=0.30,<1
+lap>=0.5,<1

@@ -1,0 +1,6 @@
+*
+!backend/
+!backend/**
+!dist/
+!dist/**
+**/__pycache__

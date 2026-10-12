@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict');
+const {summarize:s}=require('../dist/insights.js');
+assert.deepEqual(s([]),{average:0,density:'No traffic',green:0});
+assert.equal(s([{time:0,count:0}]).green,0);
+assert.equal(s([{time:0,count:5}]).density,'Low');
+assert.equal(s([{time:0,count:6}]).density,'Moderate');
+assert.equal(s([{time:0,count:15}]).density,'Moderate');
+assert.equal(s([{time:0,count:16}]).density,'High');
+assert.equal(s([{time:0,count:1}]).green,10);
+assert.equal(s([{time:0,count:100}]).green,60);
+assert.equal(s([{time:0,count:30},{time:11,count:0}]).green,0);
+assert.equal(s([{time:0,count:4},{time:1,count:8}]).average,6);
+assert.equal(s([{time:0,count:4},{time:1,count:8}]).green,18);
+console.log('PASS: density thresholds, zero demand, green-time bounds, rolling window, average smoothing.');
